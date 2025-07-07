@@ -63,8 +63,8 @@ Follow these steps to set up and run the project locally:
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/vaibhav-bhosale1/task-tracker
-    cd task-tracker
+    git clone https://github.com/vaibhav-bhosale1/task-tracker-assignment
+    cd task-tracker-assignment
     ```
 2.  **Install dependencies:**
     ```bash
