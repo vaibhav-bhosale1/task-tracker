@@ -2,20 +2,19 @@
 import React, { useState, useEffect } from 'react';
 import TaskForm from './Taskform';
 import TaskList from './TaskList';
-import { saveTasks, loadTasks } from '../utils/localstorage'; // Import localStorage helpers 
+import TaskFilter from './TaskFilter'; // Import TaskFilter
+import { saveTasks, loadTasks } from '../utils/localstorage';
 
 const TaskDashboard = ({ username }) => {
   const [tasks, setTasks] = useState([]);
-  const [editingTask, setEditingTask] = useState(null); // State for editing task
-  const [filter, setFilter] = useState('All'); // For future filtering
+  const [editingTask, setEditingTask] = useState(null);
+  const [filter, setFilter] = useState('All'); // State to hold the current filter
 
   useEffect(() => {
-    // Load tasks from localStorage when the component mounts 
     setTasks(loadTasks());
   }, []);
 
   useEffect(() => {
-    // Save tasks to localStorage whenever the tasks state changes 
     saveTasks(tasks);
   }, [tasks]);
 
@@ -41,7 +40,7 @@ const TaskDashboard = ({ username }) => {
     );
   };
 
-  // Filter tasks based on the current filter state (for future TaskFiltering step)
+  // Logic to filter tasks based on the `filter` state
   const filteredTasks = tasks.filter((task) => {
     if (filter === 'Completed') {
       return task.completed;
@@ -60,12 +59,21 @@ const TaskDashboard = ({ username }) => {
         editingTask={editingTask}
         setEditingTask={setEditingTask}
       />
-      <hr /> {/* Separator */}
+      <hr />
+
+      {/* Integrate TaskFilter here */}
+      <TaskFilter
+        currentFilter={filter}
+        onSetFilter={setFilter} // Pass setFilter to update the filter state
+        tasks={tasks} // Pass all tasks for count calculation
+      />
+      <hr />
+
       <TaskList
-        tasks={filteredTasks} // Pass filtered tasks
+        tasks={filteredTasks} // Pass the filtered tasks to TaskList
         onToggleComplete={handleToggleComplete}
         onDeleteTask={handleDeleteTask}
-        onEditClick={setEditingTask} // Pass function to set task for editing
+        onEditClick={setEditingTask}
         filter={filter} // Pass filter for "No tasks found" message
       />
     </div>
