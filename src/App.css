@@ -1,43 +1,6 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 /* src/styles/App.css */
+
+/* --- Base Styles --- */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -55,6 +18,7 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* --- Header Styles --- */
 .App-header {
   display: flex;
   justify-content: space-between;
@@ -93,6 +57,7 @@ body {
   background-color: #c82333;
 }
 
+/* --- General Form and Container Styles --- */
 .login-container, .task-dashboard-container {
   padding: 20px;
   border: 1px solid #ddd;
@@ -116,7 +81,8 @@ body {
   font-weight: bold;
 }
 
-.form-group input[type="text"] {
+.form-group input[type="text"],
+.form-group textarea { /* Combined for consistency */
   width: calc(100% - 20px);
   padding: 10px;
   border: 1px solid #ccc;
@@ -136,4 +102,197 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  margin: 30px 0;
+}
+
+/* --- Task Form Specific Styles --- */
+.task-form-container {
+  background-color: #eaf6ff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #cceeff;
+}
+
+.task-form-container h3 {
+  color: #007bff;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.task-form-container .form-group input[type="text"],
+.task-form-container textarea {
+  border: 1px solid #b3d9ff; /* Specific border color for task form inputs */
+}
+
+.task-form-container button {
+  background-color: #28a745; /* Different background for primary task form button */
+  margin-right: 10px; /* Space between add/update and cancel buttons */
+}
+
+.task-form-container button:hover {
+  background-color: #218838;
+}
+
+.task-form-container .cancel-button {
+  background-color: #6c757d;
+}
+
+.task-form-container .cancel-button:hover {
+  background-color: #5a6268;
+}
+
+/* --- Task List Styles --- */
+.task-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.no-tasks-message {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 20px;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+}
+
+/* --- Task Item Styles --- */
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.task-item.completed { /* Visual distinction for completed tasks */
+  background-color: #e6ffe6; /* Light green background */
+  border-color: #a3e0a3;
+  opacity: 0.8;
+}
+
+.task-item.completed .task-content h4 {
+  text-decoration: line-through; /* Strikethrough title for completed tasks */
+  color: #666;
+}
+
+.task-item.completed .task-content p {
+  color: #888;
+}
+
+.task-item .task-content {
+  display: flex;
+  align-items: flex-start;
+  flex-grow: 1;
+  gap: 10px;
+}
+
+.task-item .task-content input[type="checkbox"] {
+  min-width: 20px;
+  min-height: 20px;
+  cursor: pointer;
+  margin-top: 5px; /* Align checkbox with text */
+}
+
+.task-item .task-content h4 {
+  margin: 0 0 5px 0;
+  color: #333;
+}
+
+.task-item .task-content p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.task-item .task-content small {
+  font-size: 0.75em;
+  color: #999;
+}
+
+.task-item .task-actions button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85em;
+  margin-left: 10px;
+}
+
+.task-item .task-actions .edit-button {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.task-item .task-actions .edit-button:hover {
+  background-color: #e0a800;
+}
+
+.task-item .task-actions .delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.task-item .task-actions .delete-button:hover {
+  background-color: #c82333;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
+  .App {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .App-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .user-info {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .task-item .task-content {
+    width: 100%;
+  }
+
+  .task-item .task-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+
+  .task-item .task-actions button {
+    flex-grow: 1; /* Make buttons fill space on small screens */
+    margin-left: 0;
+    margin-top: 5px;
+  }
+
+  .task-item .task-actions button:first-child {
+      margin-top: 0; /* No top margin for the first button */
+  }
 }
