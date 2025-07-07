@@ -79,8 +79,12 @@ Follow these steps to set up and run the project locally:
 ## Live Demo
 
 [Link to your deployed application will go here]
-*(Once deployed, replace this placeholder with your actual live URL)*
+https://task-tracker-assignment-rho.vercel.app/
 
 ## Screenshots
 
-*(You can add 1-2 screenshots of your application here after deployment or even during development to showcase the UI)*
+
+![image](https://github.com/user-attachments/assets/fef4bdc8-35e6-43c6-8d95-0e98ae3e7794)
+![image](https://github.com/user-attachments/assets/66f09b76-b6bc-418d-a909-e338c8557916)
+
+
